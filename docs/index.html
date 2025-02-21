@@ -1,86 +1,34 @@
-<!DOCTYPE html><html lang="kk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Сарқылмайтын жылылық, Ана аты - ұлылық</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Arial', sans-serif;
-      background-image: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');
-      background-size: cover;
-      background-position: center;
-      color: #fff;
-      text-align: center;
-    }.container {
-  background: rgba(0, 0, 0, 0.6);
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 20px;
-  max-width: 600px;
-}
+export default function InvitationPage() { return ( <div className="bg-white min-h-screen text-center py-10 space-y-10"> {/* Main Invitation Image /} <div className="relative flex justify-center"> <img
+src="/mnt/data/file-MxMVxBJZjuVTek4vAyAH1Y"
+alt="8 марта приглашение"
+className="rounded-2xl shadow-lg"
+/> {/ Removing the bottom text by overlaying */} <div className="absolute bottom-5 left-0 right-0 bg-white h-12"></div> </div>
 
-h1 {
-  font-size: 2em;
-  color: #FFD700;
-}
-
-p {
-  font-size: 1.2em;
-  margin: 10px 0;
-}
-
-.calendar {
-  margin: 30px auto;
-  padding: 20px;
-  background: #fff;
-  color: #333;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 400px;
-}
-
-.highlight {
-  color: red;
-  font-weight: bold;
-}
-
-.timer {
-  font-size: 1.5em;
-  margin: 20px 0;
-  color: #00FF00;
-}
-
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Сарқылмайтын жылылық, <br>Ана аты - ұлылық</h1>
-    <p>Құрметті ұстаздар! Сіздерді 8 наурыз - Халықаралық әйелдер күніне арналған мерекелік концертке шақырамыз.</p>
+{/* Concert Invitation Section */}
+  <div className="max-w-2xl mx-auto p-6 bg-pink-100 rounded-2xl shadow-lg space-y-4">
+    <h1 className="text-3xl font-bold text-pink-700">
+      Сарқылмайтын жылылық, Ана аты - ұлылық
+    </h1>
+    <p className="text-lg text-gray-700">
+      Приглашение на праздничный концерт, посвящённый Международному женскому дню.
+    </p>
   </div>
-  <div class="calendar">
-    <h2>Наурыз 2025</h2>
-    <p>Мереке күні: <span class="highlight">7 наурыз</span></p>
+
+  {/* Event Details Section */}
+  <div className="max-w-md mx-auto p-6 bg-white rounded-2xl shadow-lg space-y-2">
+    <h2 className="text-2xl font-semibold text-pink-700">Детали мероприятия</h2>
+    <p className="text-lg text-gray-700">Время: 13:00</p>
+    <p className="text-lg text-gray-700">Место: Мәжіліс залы</p>
   </div>
-  <div class="timer" id="countdown">Таймер жүктелуде...</div>  <script>
-    function updateTimer() {
-      const eventDate = new Date('March 7, 2025 13:00:00').getTime();
-      const now = new Date().getTime();
-      const timeLeft = eventDate - now;
 
-      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  {/* Calendar Section */}
+  <div className="flex justify-center">
+    <img
+      src="/mnt/data/file-CqDXVyX9TcgDMSpzRdgdsA"
+      alt="Календарь март 2025"
+      className="rounded-2xl shadow-lg"
+    />
+  </div>
+</div>
 
-      document.getElementById('countdown').innerHTML = Қалған уақыт: ${days} күн ${hours} сағат ${minutes} минут ${seconds} секунд;
-
-      if (timeLeft < 0) {
-        document.getElementById('countdown').innerHTML = "Іс-шара басталды!";
-      }
-    }
-
-    setInterval(updateTimer, 1000);
-  </script></body>
-</html>
+); }
