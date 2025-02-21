@@ -1,55 +1,86 @@
-
-<!DOCTYPE html>
-<html lang="kk">
+<!DOCTYPE html><html lang="kk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Сарқылмайтын жылылық - 8 Наурыз</title>
+  <title>Сарқылмайтын жылылық - Ана аты ұлылық</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Arial', sans-serif;
-      background-image: url('https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea');
+      background-image: url('https://images.unsplash.com/photo-1587502536263-9298f57b1f47');
       background-size: cover;
       background-position: center;
-      color: white;
+      color: #fff;
       text-align: center;
-    }
-    .container {
-      padding: 50px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 20px;
-      margin: 100px auto;
-      max-width: 600px;
-    }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.2em;
-    }
-    #countdown {
-      font-size: 2em;
-      margin: 30px 0;
-    }
+    }.container {
+  padding: 50px;
+  background: rgba(0, 0, 0, 0.6);
+  margin: 50px auto;
+  max-width: 800px;
+  border-radius: 15px;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.3em;
+  margin-bottom: 30px;
+}
+
+.calendar {
+  font-size: 2em;
+  margin: 20px 0;
+}
+
+.countdown {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1em;
+}
+
+button {
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+}
+
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Сарқылмайтын жылылық, Ана аты - ұлылық</h1>
-    <p>Құрметті ұстаздар! Сіздерді 8 Наурыз мерекесіне арналған концертке шақырамыз.</p>
-    <p>Өтетін уақыты: 8 наурыз, 15:00</p>
-    <p>Өтетін орны: Мектептің үлкен залы</p>
-    <div id="countdown"></div>
-    <p>Сіздерді асыға күтеміз!</p>
-  </div>
-  <script>
-    // Таймер к 8 марта
-    const countdown = document.getElementById('countdown');
-    const eventDate = new Date('March 8, 2025 15:00:00').getTime();
-    const interval = setInterval(() => {
+    <h1>Сарқылмайтын жылылық - Ана аты ұлылық</h1>
+    <p>Құрметті ұстаздар! Сіздерді 8 Наурыз мерекесіне арналған концертімізге шақырамыз. Бұл ерекше күнде сіздерді қуантқымыз келеді!</p>
+    <div class="calendar">📅 8 Наурыз 2025</div>
+    <div class="countdown" id="countdown"></div><form>
+  <input type="text" placeholder="Аты-жөніңізді енгізіңіз" required>
+  <label>
+    <input type="checkbox"> Мерекеге қатысамын
+  </label>
+  <button type="submit">Жіберу</button>
+</form>
+
+  </div>  <script>
+    // Таймер обратного отсчёта
+    const countdownElement = document.getElementById('countdown');
+    const eventDate = new Date('2025-03-08T00:00:00').getTime();
+
+    const updateCountdown = () => {
       const now = new Date().getTime();
       const distance = eventDate - now;
 
@@ -58,13 +89,13 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdown.innerHTML = `${days} күн, ${hours} сағат, ${minutes} минут, ${seconds} секунд`;
+      countdownElement.innerHTML = ${days} күн, ${hours} сағат, ${minutes} минут, ${seconds} секунд;
 
       if (distance < 0) {
-        clearInterval(interval);
-        countdown.innerHTML = 'Іс-шара басталды!';
+        countdownElement.innerHTML = "Іс-шара басталды!";
       }
-    }, 1000);
-  </script>
-</body>
+    };
+
+    setInterval(updateCountdown, 1000);
+  </script></body>
 </html>
