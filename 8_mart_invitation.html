@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сарқылмайтын жылылық - 8 Наурыз</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+    }
+    .container {
+      padding: 50px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      margin: 100px auto;
+      max-width: 600px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.2em;
+    }
+    #countdown {
+      font-size: 2em;
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Сарқылмайтын жылылық, Ана аты - ұлылық</h1>
+    <p>Құрметті ұстаздар! Сіздерді 8 Наурыз мерекесіне арналған концертке шақырамыз.</p>
+    <p>Өтетін уақыты: 8 наурыз, 15:00</p>
+    <p>Өтетін орны: Мектептің үлкен залы</p>
+    <div id="countdown"></div>
+    <p>Сіздерді асыға күтеміз!</p>
+  </div>
+  <script>
+    // Таймер к 8 марта
+    const countdown = document.getElementById('countdown');
+    const eventDate = new Date('March 8, 2025 15:00:00').getTime();
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `${days} күн, ${hours} сағат, ${minutes} минут, ${seconds} секунд`;
+
+      if (distance < 0) {
+        clearInterval(interval);
+        countdown.innerHTML = 'Іс-шара басталды!';
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
