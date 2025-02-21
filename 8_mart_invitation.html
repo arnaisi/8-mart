@@ -2,100 +2,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Сарқылмайтын жылылық - Ана аты ұлылық</title>
+  <title>Сарқылмайтын жылылық - 8 Наурыз</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Arial', sans-serif;
-      background-image: url('https://images.unsplash.com/photo-1587502536263-9298f57b1f47');
+      font-family: 'Georgia', serif;
+      background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b');
       background-size: cover;
       background-position: center;
-      color: #fff;
+      color: white;
       text-align: center;
-    }.container {
-  padding: 50px;
-  background: rgba(0, 0, 0, 0.6);
-  margin: 50px auto;
-  max-width: 800px;
-  border-radius: 15px;
-}
-
-h1 {
-  font-size: 3em;
-  margin-bottom: 20px;
-}
-
-p {
-  font-size: 1.3em;
-  margin-bottom: 30px;
-}
-
-.calendar {
-  font-size: 2em;
-  margin: 20px 0;
-}
-
-.countdown {
-  font-size: 2.5em;
-  margin-bottom: 30px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-input, button {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  font-size: 1em;
-}
-
-button {
-  background-color: #28a745;
-  color: white;
-  cursor: pointer;
-}
-
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 20px;
+      margin: 50px auto;
+      max-width: 800px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      font-family: 'Times New Roman', serif;
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      color: #FFD700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    p {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .calendar {
+      margin: 30px auto;
+      padding: 20px;
+      background: #FFF;
+      color: #333;
+      border-radius: 15px;
+      max-width: 300px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .calendar-day {
+      font-weight: bold;
+      color: #FF4500;
+    }
+    .countdown {
+      font-size: 2.5em;
+      margin: 20px 0;
+      color: #00FF7F;
+    }
+    .form {
+      margin-top: 30px;
+    }
+    input, button {
+      padding: 15px;
+      margin: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1em;
+    }
+    button {
+      background-color: #FFD700;
+      color: #000;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #FF8C00;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Сарқылмайтын жылылық - Ана аты ұлылық</h1>
-    <p>Құрметті ұстаздар! Сіздерді 8 Наурыз мерекесіне арналған концертімізге шақырамыз. Бұл ерекше күнде сіздерді қуантқымыз келеді!</p>
-    <div class="calendar">📅 8 Наурыз 2025</div>
-    <div class="countdown" id="countdown"></div><form>
-  <input type="text" placeholder="Аты-жөніңізді енгізіңіз" required>
-  <label>
-    <input type="checkbox"> Мерекеге қатысамын
-  </label>
-  <button type="submit">Жіберу</button>
-</form>
+    <h1>Сарқылмайтын жылылық, Ана аты - ұлылық</h1>
+    <p>Құрметті ұстаздар! Сіздерді 8 наурыз - Халықаралық әйелдер күніне арналған мерекелік концертке шақырамыз. Бұл іс-шара 7 наурызда сағат 13:00-де өтеді.</p><div class="calendar">
+  <h2>Наурыз 2025</h2>
+  <p>Мереке күні: <span class="calendar-day">7 наурыз</span></p>
+</div>
+
+<div class="countdown" id="timer">
+  Таймер жүктелуде...
+</div>
+
+<div class="form">
+  <h3>Қатысуыңызды растаңыз</h3>
+  <input type="text" placeholder="Атыңыз" required>
+  <input type="text" placeholder="Тегіңіз" required>
+  <br>
+  <label><input type="checkbox"> Мен қатысамын</label>
+  <br>
+  <button>Жіберу</button>
+</div>
 
   </div>  <script>
-    // Таймер обратного отсчёта
-    const countdownElement = document.getElementById('countdown');
-    const eventDate = new Date('2025-03-08T00:00:00').getTime();
+    // Таймердің жұмысы
+    const timerElement = document.getElementById('timer');
+    const eventDate = new Date('2025-03-07T13:00:00').getTime();
 
-    const updateCountdown = () => {
+    function updateTimer() {
       const now = new Date().getTime();
-      const distance = eventDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownElement.innerHTML = ${days} күн, ${hours} сағат, ${minutes} минут, ${seconds} секунд;
-
-      if (distance < 0) {
-        countdownElement.innerHTML = "Іс-шара басталды!";
+      const timeLeft = eventDate - now;
+      
+      if (timeLeft <= 0) {
+        timerElement.innerHTML = 'Іс-шара басталды!';
+        return;
       }
-    };
+      
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+      
+      timerElement.innerHTML = ${days} күн ${hours} сағат ${minutes} минут ${seconds} секунд қалды;
+    }
 
-    setInterval(updateCountdown, 1000);
+    setInterval(updateTimer, 1000);
   </script></body>
 </html>
